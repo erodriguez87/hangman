@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>NBA Hangman</title>
+</head>
+
+<body>
+
+  <div id="game">
+    <h1>MONSTAR HANGMAN</h1>
+    <p>gUeSs THe nBa pLuYEr oR DA mOnS WILL eAT HIMZ</p>
+  </div>
+
+  <script type="text/javascript">
+    // Creates an array of nba players last names
+    players = ["james", "jordan","bryant","wade","oneal","shaq", "westbrook","curry"];
+
+    // Creating variables to hold the number of wins, losses, tries left, and user guesses
+    var wins = 0;
+    var losses = 0;
+    var tries = 12; 
+    var guesses = [];
+    var guesscounter = 0;
+    var player = players[Math.floor(Math.random() * players.length)];
+    playerArray = player.split('');
+    var playerLength = playerArray.length
+    var playerEmpty = [];
+    console.log(player);
+    console.log(playerArray)
+    
+    for (var cnt = 0; cnt < playerLength; cnt++) {
+      playerEmpty[cnt] = "_ ";
+    }
+    console.log(playerEmpty)
+
+    // This function is run whenever the user presses a key. it stores their guess
+    document.onkeyup = function(event) {
+      var userGuess = event.key;
+      tries--;
+
+      for (var cnt2 = 0; cnt2 < playerLength; cnt2++) {
+        if ((tries >= 0) && (userGuess === playerArray[cnt2])) {
+          playerEmpty[cnt2] = userGuess;
+        }
+      }
+
+
+      // This logic determines the outcome of the game (win/loss) or more tries. It also resets the counters when the tries are up.
+      if ((tries >= 0) && (userGuess === player)) {
+        wins++;
+        tries = 12;
+        guesses = [];
+        guesscounter = 0;
+        player = players[Math.floor(Math.random() * players.length)];
+      } else if (tries === 0){
+        losses++;
+        // console.log("you lose")
+        tries = 12;
+        guesses = [];
+        guesscounter = 0;
+        player = players[Math.floor(Math.random() * players.length)];
+      } else {
+        guesses[guesscounter] = userGuess
+        guesscounter++
+      }
+
+        // HTML for the user who can't use console.log
+        var html =
+          "<h1>MONSTAR HANGMAN </h1>" +
+          "<p>gUeSs THe nBa pLuYEr oR DA mOnS WILL eAT HIMZ</p>" +
+          "<p>Hint: " + playerEmpty + "</p>" +          
+          "<p>You chose: " + userGuess + "</p>" +
+          "<p>wins: " + wins + "</p>" +
+          "<p>losses: " + losses + "</p>" +
+          "<p>Guesses left: " + tries + "</p>" +
+          "<p>Your guesses so far: " + guesses + "</p>";
+
+        // Set the inner HTML contents of the #game div to our html string
+        document.querySelector("#game").innerHTML = html;
+      }
+  </script>
+
+</body>
+
+</html>
