@@ -38,10 +38,28 @@
     // This function is run whenever the user presses a key. it stores their guess
     document.onkeyup = function(event) {
       var userGuess = event.key;
-      for (var cnt2 = 0; cnt2 < playerLength; cnt2++) {
-        if ((tries >= 0) && (userGuess === playerArray[cnt2])) {
-          playerEmpty[cnt2] = userGuess;
-        }
+      if ((tries >= 0) && (playerEmpty != playerArray)) {
+        // loop through the empty array and if the guess matches add them to the same pos of empty array
+          for (var cnt2 = 0; cnt2 < playerLength; cnt2++) {
+            if ((tries >= 0) && (userGuess === playerArray[cnt2])) {
+              playerEmpty[cnt2] = userGuess;
+            // check if the guess has already been guessed, if it has exit, if not reduce the number of available tries
+            } else {
+                for (cnt3 = 0; cnt3 < playerLength; cnt3++) {
+                  if (userGuess === guesses[cnt3]){
+                  } else {
+                  guesses[guesscounter] = userGuess;
+                  guesscounter++;
+                  tries--;
+                  }
+            }
+          }
+      } else if ((tries >= 0) && (playerEmpty === playerArray)) {
+          wins++;
+      } else {
+          losses++;
+      }
+
       }
 
 
