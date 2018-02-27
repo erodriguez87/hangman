@@ -17,6 +17,7 @@ console.log(playerArray)
 var j = 0
 var win = true
 
+// function set up to reset the game. i call this as i start and if there is a win or loss
 function resetGame(){
     j = 0;
     tries = 12;
@@ -38,6 +39,7 @@ function emptySet(){
       }
 }
 
+// can call this to check if user wins
 function winCondition(){
   for (var i = 0; i < playerLength; i++){
     if (playerEmpty[i] === playerArray[i]) {
@@ -56,6 +58,7 @@ function winCondition(){
     }   
   }
 
+// can call this to see if user loses
   function lossCondition(){
     if ((tries <= 0) && (win == false)) {
       losses++;
@@ -64,7 +67,8 @@ function winCondition(){
   }
 
 emptySet();
-// This function is run whenever the user presses a key. it stores their guess
+
+// This function is run whenever the user presses a key. it stores their guess and starts the game
 document.onkeyup = function(event) {
   var userGuess = event.key;
   if ((tries >= 0) && (playerEmpty != playerArray)) {
@@ -76,7 +80,6 @@ document.onkeyup = function(event) {
           console.log("you found a letter!")
           winCondition();
           lossCondition();
-        // check if the guess has already been guessed, if it has exit, if not reduce the number of available tries
         }
       } 
     // check if the letter has already been guessed, if it has exit, if it hasn't then add the guess to the guess array and reduce the number of available tries
