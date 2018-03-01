@@ -39,20 +39,40 @@ function emptySet(){
       }
 }
 
+//testing an oject and how it functions
+function curry(){
+  var curry = {
+    "player": "curry",
+    "team": "Golden State Warriors",
+    "position": "PG",
+    "facts": [
+      "shoots 3s",
+      "chews his mouthguard",
+      "turns the ball over",
+      "best shooter of all time"
+    ]
+  }
+  alert(curry.facts[1])
+}
+
 // can call this to check if user wins
 function winCondition(){
   for (var i = 0; i < playerLength; i++){
     if (playerEmpty[i] === playerArray[i]) {
         j++;
-        console.log('at least one letter matches') 
+        // console.log('at least one letter matches') 
         if (j===playerLength){
+          if (player === "curry"){
+            curry();
+          }
           wins++;
-          console.log('victory, they all match')
+          // console.log('victory, they all match')
           resetGame();
+            
         }
     } else {
         j = 0;
-        console.log('no luck')
+        // console.log('no luck')
         win = false;
       }
     }   
@@ -77,7 +97,7 @@ document.onkeyup = function(event) {
       for (var cnt2 = 0; cnt2 < playerLength; cnt2++) {
         if ((tries >= 0) && (userGuess === playerArray[cnt2])) {
           playerEmpty[cnt2] = userGuess;
-          console.log("you found a letter!")
+          // console.log("you found a letter!")
           winCondition();
           lossCondition();
         }
@@ -85,10 +105,10 @@ document.onkeyup = function(event) {
     // check if the letter has already been guessed, if it has exit, if it hasn't then add the guess to the guess array and reduce the number of available tries
       for (cnt3 = 0; cnt3 < playerLength; cnt3++) {
         if (userGuess === guesses[cnt3]){
-          console.log("you already guessed that letter")
+          // console.log("you already guessed that letter")
           return
         } else {
-          console.log("that letter isn't there")
+          // console.log("that letter isn't there")
           lossCondition();
         }
       }
@@ -122,15 +142,4 @@ document.onkeyup = function(event) {
   
       //testing object
 
-      var curry = {
-        "player": "curry",
-        "team": "Golden State Warriors",
-        "position": "PG",
-        "facts": [
-          "shoots 3s",
-          "chews his mouthguard",
-          "turns the ball over",
-          "best shooter of all time"
-        ]
-      }
   }
