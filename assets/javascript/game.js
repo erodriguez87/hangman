@@ -97,16 +97,40 @@ document.onkeyup = function(event) {
       lossCondition();
   } 
 
-
+    
     // HTML for the user who can't use console.log
     var html =
-      "<p>Hint: " + playerEmpty + "</p>" +          
+               
       "<p>You chose: " + userGuess + "</p>" +
-      "<p>wins: " + wins + "</p>" +
-      "<p>losses: " + losses + "</p>" +
-      "<p>Guesses left: " + tries + "</p>" +
-      "<p>Your guesses so far: " + guesses + "</p>";
-
+      "<p>Guesses left: " + tries + "</p>";
+      
     // Set the inner HTML contents of the #game div to our html string
     document.querySelector("#game").innerHTML = html;
+    
+    var hintH =
+    "<p>Hint: " + playerEmpty + "</p>" + 
+    "<p>Your guesses so far: " + guesses + "</p>";
+
+    document.querySelector("#hint").innerHTML = hintH;
+
+
+    var winsH =
+      "<p>wins: " + wins + "</p>" +
+      "<p>losses: " + losses + "</p>";
+
+      document.querySelector("#winsHT").innerHTML = winsH;
+  
+      //testing object
+
+      var curry = {
+        "player": "curry",
+        "team": "Golden State Warriors",
+        "position": "PG",
+        "facts": [
+          "shoots 3s",
+          "chews his mouthguard",
+          "turns the ball over",
+          "best shooter of all time"
+        ]
+      }
   }
