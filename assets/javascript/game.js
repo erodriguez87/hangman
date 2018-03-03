@@ -139,7 +139,4 @@ document.onkeyup = function(event) {
       "<p>losses: " + losses + "</p>";
 
       document.querySelector("#winsHT").innerHTML = winsH;
-  
-      //testing object
-
   }
